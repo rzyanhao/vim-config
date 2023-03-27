@@ -12,6 +12,10 @@ return {
           ["/"] = "",
         },
       },
+      filesystem = {
+        bind_to_cwd = false,
+        follow_current_file= true,
+      },
       event_handlers = {
         {
           event = "file_opened",
