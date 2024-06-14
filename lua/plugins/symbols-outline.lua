@@ -1,4 +1,5 @@
 return {
+  -- { "folke/trouble.nvim", enabled = false },
   {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",

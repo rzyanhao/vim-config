@@ -1,3 +1,5 @@
+local Util = require("lazyvim.util")
+
 return {
   {
     "telescope.nvim",
@@ -7,6 +9,9 @@ return {
       config = function()
         require("telescope").load_extension("fzf")
       end,
+    },
+    keys = {
+      { "<leader>/", Util.telescope("live_grep", { cwd = false }), desc = "Grep (root dir)" },
     },
     opts = {
       defaults = {

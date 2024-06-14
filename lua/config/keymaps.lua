@@ -1,6 +1,7 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+
 local Util = require("lazyvim.util")
 
 local function map(mode, lhs, rhs, opts)
@@ -14,17 +15,28 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
-local format = require("lazyvim.plugins.lsp.format").format
-
 map("n", "<S-h>", "^")
+map("v", "<S-h>", "^")
 map("n", "<S-l>", "$")
+map("v", "<S-l>", "$")
 map("n", "<leader><leader>a", "ggVG")
-map("n", "<leader>p", format)
+-- map("n", "<leader>p", "format")
+
+-- formatting
+map("n", "<leader>p", function()
+  Util.format({ force = true })
+end, { desc = "Format" })
+
+
+map("n", "<leader>z", '<cmd>:ZenMode<CR>')
 
 map("n", "∆", "<cmd>m .+1<CR>")
 map("n", "˚", "<cmd>m .-2<CR>")
 map("i", "∆", "<cmd>m .+1<CR>")
 map("i", "˚", "<cmd>m .-2<CR>")
+
+map("n", "<leader>dh", "<cmd>lua vim.diagnostic.hide()<CR>")
+map("n", "<leader>ds", "<cmd>lua vim.diagnostic.show()<CR>")
 --
 local hop = require("hop")
 local directions = require("hop.hint").HintDirection

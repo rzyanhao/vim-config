@@ -6,15 +6,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
 
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
-    -- { import = "lazyvim.plugins.extras.lang.typescript" },
+    { import = "lazyvim.plugins.extras.lang.typescript" },
+    { import = "lazyvim.plugins.extras.linting.eslint" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
     -- { import = "lazyvim.plugins.extras.lang.json" },
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
@@ -47,3 +47,22 @@ require("lazy").setup({
     },
   },
 })
+-- vim.diagnostic.config({
+--   virtual_text = {
+--     -- source = "always",  -- Or "if_many"
+--     prefix = '●', -- Could be '■', '▎', 'x'
+--   },
+--   severity_sort = true,
+--   float = {
+--     source = "always",  -- Or "if_many"
+--   },
+-- })
+
+-- vim.diagnostic.config({
+--   virtual_text = false,
+--   signs = false,
+--   underline = false,
+--   update_in_insert = false,
+--   severity_sort = false,
+-- })
+
